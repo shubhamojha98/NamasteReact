@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
 import About from "./component/About";
 import Contact from "./component/Contact";
 import Error from "./component/Error";
-
+import RestaurantMenu from "./component/ResturantMenu";
 
 /* My Food App structure will look like this, 
             1) Header
@@ -55,6 +55,11 @@ const appRouter=createBrowserRouter([
       {
         path:"/contact",
         element:<Contact/> 
+      },
+      {
+        path:"/resturant/:resId",
+        element:<RestaurantMenu/>
+
       }
     ],
     errorElement:<Error/>

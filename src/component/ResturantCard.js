@@ -11,7 +11,7 @@ const RestaurantCard = (props) => {
         lastMileTravelString,
         costForTwoString,
         avgRating,
-    } = resData?.data;
+    } = resData?.info;
     return (
        
                 <div className="res-card">
