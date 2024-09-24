@@ -4,6 +4,8 @@ export const LOGO_URL="https://t3.ftcdn.net/jpg/02/41/30/72/360_F_241307210_Mjja
 // Image CDN URL for Restaurant card
 export const IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
+export const MENU_API="https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=23.3440997&lng=85.309562&restaurantId=";
+
 // export const restaurantList = [
 //     {
 //       type: "restaurant",
