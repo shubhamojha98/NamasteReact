@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-// import { restaurantList } from "../utils/constant"
 import RestaurantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
-  // const [listofResturant, setListOfResturant] = useState(restaurantList);
+
   const [listofResturant, setListOfResturant] = useState([]);
-  // const [filteredRestaurant, setFilteredRestaurant] = useState(restaurantList);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
-
-  // use useEffect for one time call getRestaurants using empty dependency array
   useEffect(() => {
     fetchData();
   }, []);
@@ -22,8 +19,6 @@ const Body = () => {
     );
 
     const json = await data.json();
-    // console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    // console.log(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     //  Optional Chaining
     setListOfResturant(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -34,16 +29,18 @@ const Body = () => {
   };
 
   const filterTopRated = () => {
-    // const filteredList = listofResturant?.filter((res) => res.data.avgRating > 4);
     const filteredList = listofResturant?.filter(
       (res) => res.info.avgRating > 4
     );
     const sortedList = filteredList?.sort(
       (a, b) => b.info.avgRating - a.info.avgRating
     );
-    // setFilteredRestaurant(filteredList);
     setFilteredRestaurant(sortedList);
   };
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) {
+    return <h1>Your Are Offline</h1>;
+  }
   return listofResturant.length === 0 ? (
     <Shimmer />
   ) : (
