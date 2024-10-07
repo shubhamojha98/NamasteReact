@@ -46,10 +46,11 @@ const Body = () => {
   ) : (
     <>
       <div className="body">
-        <div className="search">
+        <div className="flex content-center items-center mt-12 gap-2">
           <input
             type="search"
-            className="search-input"
+            className="w-72 p-2 text-base border-2 border-gray-300 rounded focus:border-blue-300
+            transition-all duration-300 ease-in-out"
             placeholder="Search a restaurant you want..."
             value={searchText}
             onChange={(e) => {
@@ -57,7 +58,8 @@ const Body = () => {
             }}
           />
           <button
-            className="search-btn"
+            className="search-btn text-base px-2 py-2 border-0 rounded bg-blue-600 text-white cursor-pointer
+            transition-colors duration-300 hover:bg-blue-700"
             onClick={() => {
               const filteredListByName = listofResturant.filter((res) =>
                 res.data.name.toLowerCase().includes(searchText.toLowerCase())
@@ -73,7 +75,7 @@ const Body = () => {
             Top Rate Resturant
           </button>
         </div>
-        <div className="res-container">
+        <div className="w-auto flex flex-auto content-center flex-wrap">
           {filteredRestaurant.map((restaurant) => {
             return (
               <Link
