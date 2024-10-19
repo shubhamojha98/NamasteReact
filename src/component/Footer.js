@@ -3,9 +3,9 @@
 const Footer = () => {
     const year = new Date().getFullYear();
     return (
-        <div className="footer">
+        <div className="footer m-1 w-auto text-center px-3 py-5 rounded-md shadow-md">
             Created By
-            <i class="fa-solid fa-heart"></i>
+            <i className="fa-solid fa-heart px-1 text-sm text-red-600"></i>
             <a href="#" target="_blank">
                 Shubham Ojha
             </a>

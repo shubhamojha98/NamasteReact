@@ -21,9 +21,7 @@ const Header = () => {
             <li className='px-4'><Link to='/grocery'>Grocery</Link></li>
             <li className='px-4'><i class="fa-solid fa-cart-shopping"></i> Cart</li>
           </ul>
-
         </div>
-``
       </div>
     </>
   )

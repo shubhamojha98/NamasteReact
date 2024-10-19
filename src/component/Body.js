@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import RestaurantCard from "./ResturantCard";
+import RestaurantCard, { promtedLabel } from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -9,6 +9,8 @@ const Body = () => {
   const [listofResturant, setListOfResturant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const PromotedResCard = promtedLabel(RestaurantCard);
+  console.log(listofResturant);
   useEffect(() => {
     fetchData();
   }, []);
@@ -27,10 +29,11 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  console.log(listofResturant);
 
   const filterTopRated = () => {
     const filteredList = listofResturant?.filter(
-      (res) => res.info.avgRating > 4
+      (res) => res.info.avgRating > 4.3
     );
     const sortedList = filteredList?.sort(
       (a, b) => b.info.avgRating - a.info.avgRating
@@ -46,7 +49,7 @@ const Body = () => {
   ) : (
     <>
       <div className="body">
-        <div className="flex content-center items-center mt-12 gap-2">
+        <div className="flex justify-center items-center mt-12 gap-2">
           <input
             type="search"
             className="w-72 p-2 text-base border-2 border-gray-300 rounded focus:border-blue-300
@@ -57,6 +60,7 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
+
           <button
             className="search-btn text-base px-2 py-2 border-0 rounded bg-blue-600 text-white cursor-pointer
             transition-colors duration-300 hover:bg-blue-700"
@@ -70,19 +74,20 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="filter">
-          <button className="filter-btn" onClick={filterTopRated}>
+        <div className="flex items-center p-4 m-4">
+          <button className="px-3 py-2 rounded-lg bg-gray-400 cursor-pointer" onClick={filterTopRated}>
             Top Rate Resturant
           </button>
         </div>
-        <div className="w-auto flex flex-auto content-center flex-wrap">
+        <div className="w-auto flex flex-auto justify-center flex-wrap">
           {filteredRestaurant.map((restaurant) => {
             return (
               <Link
                 key={restaurant.info.id}
                 to={"/resturant/" + restaurant.info.id}
               >
-                <RestaurantCard resData={restaurant} />
+                {restaurant.info.avgRating > 4.3 ? (<PromotedResCard resData={restaurant} />) : (<RestaurantCard resData={restaurant}/>)}
+
               </Link>
             );
           })}

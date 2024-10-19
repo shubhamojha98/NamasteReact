@@ -65,18 +65,16 @@
   /* Resturand Card */
   
   /* Center the search box container */
-  .search {
+  /* .search {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    /* Adjust as needed */
     gap: 10px;
-    /* Space between input and button */
-  }
+  } */
   
   /* Style the search input */
-  .search-input {
+  /* .search-input {
     width: 300px;
     padding: 10px;
     font-size: 16px;
@@ -89,10 +87,10 @@
   .search-input:focus {
     border-color: #007BFF;
     outline: none;
-  }
+  } */
   
   /* Style the search button */
-  .search-btn {
+  /* .search-btn {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -101,13 +99,11 @@
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    /* Smooth transition for hover effect */
-  }
+  } 
   
   .search-btn:hover {
     background-color: #0056b3;
-    /* Darker blue on hover */
-  }
+  }*/
   
   /* Filter */
   .filter {
@@ -131,53 +127,44 @@
     justify-content: center;
   }
   
-  .res-card {
+  /* .res-card {
     width: 240px;
     cursor: pointer;
     border-radius: 5px;
     margin: 20px;
     padding: 10px;
-    /* border: 1px solid black; */
     box-shadow: -1px 5px 10px 5px rgba(112, 112, 112, .2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
   .res-card:hover {
     transform: scale(1.05);
-    /* Slightly increase the size */
     box-shadow: -1px 5px 15px 5px rgba(112, 112, 112, 0.2);
-    /* Add shadow effect */
-  }
+  } */
   
-  .res-logo {
+  /* .res-logo {
     width: 100%;
     border-radius: 10px;
-  }
+  } 
   
   .res-card h3,
   .res-card h5,
   .res-card h6,
   .res-card h4 {
     margin: 5px 0;
-    /* Add margin to create space between elements */
     overflow: hidden;
-    /* Hide overflow text */
     white-space: nowrap;
-    /* Prevent text from wrapping */
     text-overflow: ellipsis;
-    /* Add ellipsis (...) for overflow text */
     text-align: center;
-  }
+  }*/
   
   
   
   /* footer CSS */
   .footer {
     margin: 2px;
-    /* margin-bottom: 1px; */
     width: auto;
     text-align: center;
-    /* background-color: rgb(1, 163, 144); */
     padding: 20px 10px 20px;
     border-radius: 5px;
     box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
