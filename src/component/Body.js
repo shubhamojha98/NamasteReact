@@ -10,7 +10,6 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const PromotedResCard = promtedLabel(RestaurantCard);
-  console.log(listofResturant);
   useEffect(() => {
     fetchData();
   }, []);
@@ -29,7 +28,6 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  console.log(listofResturant);
 
   const filterTopRated = () => {
     const filteredList = listofResturant?.filter(
