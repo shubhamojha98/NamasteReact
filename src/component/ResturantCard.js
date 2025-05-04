@@ -7,10 +7,10 @@ const RestaurantCard = (props) => {
         cloudinaryImageId,
         name,
         cuisines,
-        area,
-        lastMileTravelString,
+        areaName,
         costForTwoString,
         avgRating,
+        sla
     } = resData?.info;
     return (
 
@@ -19,8 +19,8 @@ const RestaurantCard = (props) => {
             <img className="rounded-lg" src={IMG_CDN_URL + cloudinaryImageId} />
             <h3 className="my-1 overflow-hidden whitespace-nowrap text-ellipsis text-center">{name}</h3>
             <h5 className="my-1 overflow-hidden whitespace-nowrap text-ellipsis text-center">{cuisines.join(", ")}</h5>
-            <h6 className="my-1 overflow-hidden whitespace-nowrap text-ellipsis text-center">{area}</h6>
-            <h4 className="my-1 overflow-hidden whitespace-nowrap text-ellipsis text-center">{lastMileTravelString}</h4>
+            <h6 className="my-1 overflow-hidden whitespace-nowrap text-ellipsis text-center">{areaName}</h6>
+            <h4 className="my-1 overflow-hidden whitespace-nowrap text-ellipsis text-center">{sla.lastMileTravelString}</h4>
             <h4 className="my-1 overflow-hidden whitespace-nowrap text-ellipsis text-center">{costForTwoString}</h4>
             <h4 className="my-1 overflow-hidden whitespace-nowrap text-ellipsis text-center">{avgRating}</h4>
         </div>
