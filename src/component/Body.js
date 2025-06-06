@@ -3,6 +3,7 @@ import RestaurantCard, { promtedLabel } from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import axios from "axios";
 
 const Body = () => {
 
@@ -14,21 +15,37 @@ const Body = () => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.3440997&lng=85.309562&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.3440997&lng=85.309562&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+  const fetchData = async ()=>{
+    try {
+      const response = await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.4929905&lng=77.07241429999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+      const data = response?.data?.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants;
+      setListOfResturant(data);
+      setFilteredRestaurant(data);
+    } catch (error) {
+      console.error(error)
+      
+    }
+  }
 
-    const json = await data.json();
-    //  Optional Chaining
-    setListOfResturant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  // const fetchData = async () => {
+  //   // const data = await fetch(
+  //   //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.4929905&lng=77.07241429999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  //   //   // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.3440997&lng=85.309562&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  //   // );
+  //   const data =async ()=>{
+  //     await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.4929905&lng=77.07241429999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+  //   }
+  //   console.log(data);
+
+  //   const json = await data.json();
+  //   //  Optional Chaining
+  //   setListOfResturant(
+  //     json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  //   );
+  //   setFilteredRestaurant(
+  //     json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  //   );
+  // };
 
   const filterTopRated = () => {
     const filteredList = listofResturant?.filter(

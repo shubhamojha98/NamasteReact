@@ -1,38 +1,38 @@
+import { Typography } from '@mui/material';
 import { IMG_CDN_URL } from "../utils/constant";
+
+// Component that maps items to accordions
 const ItemList = ({ items }) => {
   console.log(items);
   return (
-    <div>
-      {items.map((items) => (
-        <div
-          key={items.card.info.id}
-          className="p-2 m-2 border-b-2 border-gray-300 text-left flex justify-between"
-        >
-          <div className="w-9/12">
-            <div className="py-2">
-              <span>{items.card.info.name}</span>
-              <span>
-                {" "}
-                - Rs{" "}
-                {items.card.info.price
-                  ? items.card.info.price / 100
-                  : items.card.info.defaultPrice / 100}
-              </span>
+    <>
+      {items.map((item, index) => {
+        const info = item?.card?.info;
+
+        return (
+          <Typography
+            key={index}
+            sx={{
+              borderBottom: '1px solid #e0e0e0',
+              py: 1,
+              fontSize: '0.95rem',
+            }}
+          >
+            <div className="flex gap-4">
+              <div className='w-2/3 items-center'>
+                <div className='text-left font-semibold text-lg leading-[22px] tracking-[-0.45px]'>{info?.name}</div>
+                <div className='text-left font-semibold text-lg mt-1'>Rs {Math.round(info?.price / 100)}</div>
+                <div className='mt-3 text-sm font-normal leading-5 tracking-[-0.45px]'>{info?.description}</div>
+              </div>
+              <div className='w-1/3'>
+                <img className="rounded-lg" src={IMG_CDN_URL + info?.imageId} alt={info?.name} />
+              </div>
             </div>
-            <p className="text-xs">{items.card.info.description}</p>
-          </div>
-          <div className="w-3/12 p-4">
-            <div className="absolute mx-11 mt-16">
-              <button className="p-2 bg-white shadow-lg m-auto rounded-lg">Add+</button>
-            </div>
-            <img
-              className="w-full"
-              src={IMG_CDN_URL + items.card.info.imageId}
-            />
-          </div>
-        </div>
-      ))}
-    </div>
+          </Typography>
+        );
+      })}
+    </>
   );
 };
+
 export default ItemList;
